@@ -16,7 +16,7 @@ class Searchbar extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.onSubmit(event.target.elements.searchName.value.trim());
-        this.target.reset();
+        event.target.reset();
     };
 
     render() {
