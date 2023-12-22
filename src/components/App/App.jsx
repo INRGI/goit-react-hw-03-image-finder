@@ -4,6 +4,7 @@ import * as API from '../../services/PixabayApi';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'components/ImageGallery';
+import Button from 'components/Button';
 
 class App extends Component{
 
@@ -62,14 +63,25 @@ class App extends Component{
     }
   };
 
+  loadMore = () => {
+    this.setState(prevState => ({
+      currentPage: prevState.currentPage + 1,
+    }));
+  };
+
   render() {
-    const { images } = this.state;
+    const { images, isLoading, totalPages, currentPage } = this.state;
 
     return (
           <div>
         <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery images={images}/>
-            <ToastContainer />
+        <ImageGallery images={images} />
+        
+        
+        {images.length > 0 && totalPages !== currentPage && !isLoading && (
+          <Button onClick={this.loadMore}/>
+        )}
+        <ToastContainer />
           </div>
     );
   };
