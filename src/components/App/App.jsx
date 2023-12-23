@@ -5,6 +5,7 @@ import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'components/ImageGallery';
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 
 class App extends Component{
 
@@ -75,9 +76,10 @@ class App extends Component{
     return (
           <div>
         <Searchbar onSubmit={this.handleSubmit} />
+       
         <ImageGallery images={images} />
         
-        
+        {isLoading && <Loader/>}
         {images.length > 0 && totalPages !== currentPage && !isLoading && (
           <Button onClick={this.loadMore}/>
         )}
