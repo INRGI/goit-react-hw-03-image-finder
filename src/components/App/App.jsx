@@ -58,7 +58,10 @@ class App extends Component{
       );
 
     } catch {
-      this.setState({error: 'Something went wrong 😿'})
+      this.setState({ error: 'Something went wrong 😿' });
+      toast.error('Something went wrong 😿', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     } finally {
       this.setState({ isLoading: false });
     }
