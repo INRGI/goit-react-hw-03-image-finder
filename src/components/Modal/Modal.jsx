@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { Modalka, Overlay } from "./Modal.styled";
+import { Img, Modalka, Overlay } from "./Modal.styled";
 
 import PropTypes from 'prop-types';
 const { Component } = require("react");
@@ -36,7 +36,7 @@ class Modal extends Component{
         return createPortal(
             <Overlay onClick={this.handleBackdropClick}>
                 <Modalka class="modal">
-                    <img src={largeImageURL} alt={tags} />
+                    <Img src={largeImageURL} alt={tags} />
                 </Modalka>
             </Overlay>,
             modalRoot
